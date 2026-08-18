@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Planning — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --paper:#F1F1F1;
+    --card:#FFFFFF;
+    --line:#E0E0E0;
+    --muted-solid:#5A5A5A;
+    --teal:#E64626;
+    --amber:#F9A134;
+    --green:#007E3B;
+    --red:#7A2000;
+    --gold:#FFB800;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased; padding:28px 32px 80px;
+  }
+  .app{max-width:1100px;margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted-solid);
+  }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted-solid); margin-bottom:12px;
+  }
+
+  .topbar{
+    display:flex; align-items:flex-end; gap:14px; padding-bottom:22px; margin-bottom:32px; border-bottom:2px solid var(--ink);
+  }
+  .brand-mark{ font-family:'Newsreader',serif; font-weight:600; font-size:40px; line-height:1; color:var(--teal); }
+  h1{ font-family:'Newsreader',serif; font-weight:500; font-size:30px; margin:2px 0 0; }
+
+  .nav-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:40px; }
+  .nav-card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:26px;
+    text-decoration:none; color:var(--ink); display:block; transition:border-color .15s, box-shadow .15s;
+  }
+  .nav-card:hover{ border-color:var(--teal); box-shadow:0 8px 24px rgba(0,0,0,.06); }
+  .nav-card .card-icon{
+    width:40px; height:40px; border-radius:9px; background:var(--paper); display:flex; align-items:center;
+    justify-content:center; font-family:'Newsreader',serif; font-size:20px; color:var(--teal); margin-bottom:16px;
+  }
+  .nav-card h2{ font-family:'Newsreader',serif; font-size:20px; font-weight:600; margin:0 0 8px; }
+  .nav-card p{ font-size:13px; color:var(--muted-solid); line-height:1.6; margin:0 0 14px; }
+  .nav-card .go{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--teal); }
+
+  .table-wrap{ background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  thead th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted-solid); background:var(--paper); padding:10px 14px; border-bottom:1px solid var(--line);
+  }
+  tbody td{ padding:12px 14px; border-bottom:1px solid var(--paper); vertical-align:middle; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover{ background:#FBFAF7; }
+  .unit-name-cell{ font-family:'Newsreader',serif; font-weight:600; font-size:14px; }
+  .unit-code-cell{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted-solid); }
+  .weight-pill{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:2px 9px; border-radius:20px; display:inline-block;
+  }
+  .weight-pill.ok{ background:#EDF3F0; color:var(--green); }
+  .weight-pill.over{ background:#F6ECE9; color:var(--red); }
+  .weight-pill.under{ background:#FBEFE2; color:var(--amber); }
+  .open-link{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--teal); text-decoration:none; white-space:nowrap;
+  }
+  .open-link:hover{ text-decoration:underline; }
+  .empty-state{
+    text-align:center; padding:50px 20px; color:var(--muted-solid); font-family:'IBM Plex Mono',monospace; font-size:13px;
+  }
+
+  .backend-note{
+    background:#FBF0E6; border-left:3px solid var(--amber); padding:12px 16px; border-radius:0 8px 8px 0;
+    font-size:12.5px; color:#8A5A24; margin-top:24px; line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="topbar">
+    <span class="brand-mark">§</span>
+    <div>
+      <div class="eyebrow">Assessment Planning</div>
+      <h1>Dashboard</h1>
+    </div>
+  </div>
+
+  <div class="nav-grid">
+    <a class="nav-card" href="assessment_matrix.html">
+      <div class="card-icon">M</div>
+      <h2>Assessment Matrix</h2>
+      <p>Build out one unit at a time — assessments, learning outcomes, and learning activities. Each unit keeps its own saved data.</p>
+      <div class="go">Open Assessment Matrix →</div>
+    </a>
+    <a class="nav-card" href="assessment_schedule.html">
+      <div class="card-icon">S</div>
+      <h2>Assessment Schedule</h2>
+      <p>Compare units side-by-side by week, grouped by year level and semester, to spot clustering across a program.</p>
+      <div class="go">Open Assessment Schedule →</div>
+    </a>
+  </div>
+
+  <div class="section-label">Units with saved data</div>
+  <div class="table-wrap" id="unitsWrap"></div>
+
+  <div class="backend-note">
+    <strong>Note:</strong> this dashboard reads data saved in this browser only (via local storage). It won't show units entered on a different device or browser, and nothing here is backed up centrally yet.
+  </div>
+</div>
+
+<script>
+function yearLabel(code){
+  const m = code && code.match(/\d+/);
+  if(!m) return '—';
+  const num = parseInt(m[0], 10);
+  if(num >= 5000) return 'Postgraduate';
+  const first = String(num)[0];
+  const map = {'1':'1st Year','2':'2nd Year','3':'3rd Year','4':'4th Year'};
+  return map[first] || '—';
+}
+
+function loadUnits(){
+  let keys = [];
+  try { keys = Object.keys(localStorage).filter(k => k.startsWith('assessmentMatrixUnit:')); }
+  catch(e){ return []; }
+  return keys.map(k => {
+    try { return JSON.parse(localStorage.getItem(k)); }
+    catch(e){ return null; }
+  }).filter(Boolean).filter(u => u.unitCode);
+}
+
+function render(){
+  const units = loadUnits();
+  const wrap = document.getElementById('unitsWrap');
+  if(units.length === 0){
+    wrap.innerHTML = '<div class="empty-state">No units have been started yet — open the Assessment Matrix and pick a unit to begin.</div>';
+    return;
+  }
+  units.sort((a,b) => (b.savedAt||0) - (a.savedAt||0));
+  const rows = units.map(u => {
+    const assessments = u.assessments || [];
+    const total = assessments.reduce((s,a) => s + (a.weight||0), 0);
+    const pillClass = total === 100 ? 'ok' : (total > 100 ? 'over' : 'under');
+    const savedDate = u.savedAt ? new Date(u.savedAt).toLocaleDateString() : '—';
+    return `
+      <tr>
+        <td>
+          <div class="unit-name-cell">${u.unitName || 'Untitled unit'}</div>
+          <div class="unit-code-cell">${u.unitCode}</div>
+        </td>
+        <td>${yearLabel(u.unitCode)}</td>
+        <td>${assessments.length}</td>
+        <td><span class="weight-pill ${pillClass}">${total}%</span></td>
+        <td>${savedDate}</td>
+        <td><a class="open-link" href="assessment_matrix.html?unit=${encodeURIComponent(u.unitCode)}">Open →</a></td>
+      </tr>`;
+  }).join('');
+  wrap.innerHTML = `
+    <table>
+      <thead>
+        <tr><th>Unit</th><th>Level</th><th>Assessments</th><th>Total weight</th><th>Last saved</th><th></th></tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+render();
+</script>
+</body>
+</html>
